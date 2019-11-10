@@ -3,7 +3,7 @@ MAINTAINER Ivan Reynaldi Putra (Pandaiman)
 
 ENV PYTHONUNBUFFERED 1
 
-# Install dependencies
+# Install dependencies ..from -> ..to
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
 
