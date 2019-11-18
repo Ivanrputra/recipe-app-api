@@ -36,3 +36,7 @@ class IngredientViewSet(viewsets.GenericViewSet,
 	def get_queryset(self):
 		# return object for thr current authenticated user
 		return self.queryset.filter(user=self.request.user).order_by('-name')
+
+	def perform_create(self,serializers):
+		# create a new tag
+		serializers.save(user=self.request.user)
