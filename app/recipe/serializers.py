@@ -17,11 +17,11 @@ class IngredientSerializer(serializers.ModelSerializer):
 
 class RecipeSerializer(serializers.ModelSerializer):
 
-	ingredients = serializers.PrimaryKeyRealtedField(
+	ingredients = serializers.PrimaryKeyRelatedField(
 		many=True,
 		queryset=Ingredient.objects.all()
 		)
-	tags = serializers.PrimaryKeyRealtedField(
+	tags = serializers.PrimaryKeyRelatedField(
 		many=True,
 		queryset=Tag.objects.all()
 		)
