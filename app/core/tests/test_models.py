@@ -1,6 +1,9 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
+
 from core import models
+
+from unittest.mock import patch
 
 def sample_user(email="ivanrputra@gmail.com",password="12345678"):
 	# create a sample user
@@ -52,3 +55,24 @@ class ModelTest(TestCase):
 			name="Cucumber"
 			)
 		self.assertEqual(str(ingredient),ingredient.name)
+
+	def test_recipe_str(self):
+		# test the recipe string representation
+		recipe = models.Recipe.objects.create(
+			user=sample_user(),
+			title="Steak and mushroom sauce",
+			time_minutes=5,
+			price=5.00
+			)
+		self.assertEqual(str(recipe),recipe.title)
+
+	# @patch('uuid.uuid4')
+	# def test_recipe_filename_uuid(self,mock_uuid:
+	# 	# test that image is saved in the correct location
+	# 	uuid = 'test-uuid'
+	# 	mock_uuid.return_value = uuid
+	# 	file_path = models.recipe_image_file_path(None,'myimage.jpg')
+
+	# 	exp_path = f'uploads/recipe/{uuid}.jpg'
+
+	# 	self.assertEqual(file_path,exp_path)
